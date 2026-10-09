@@ -1,0 +1,31 @@
+{
+  "name": "opencode-learning-style",
+  "version": "0.1.0",
+  "description": "Learning output style plugin for OpenCode: active learning through meaningful code contributions at decision points",
+  "license": "MIT",
+  "author": "Felipe Alves",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": ["src"],
+  "keywords": ["opencode", "opencode-plugin", "learning"],
+  "engines": {
+    "opencode": ">=1.18.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipeverse/opencode-learning-style.git"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=1.18.0"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "^1.18.0",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,7 +1,7 @@
 {
-  "name": "opencode-learning-style",
+  "name": "opencode-output-styles",
   "version": "0.1.0",
-  "description": "Learning output style plugin for OpenCode: active learning through meaningful code contributions at decision points",
+  "description": "Opt-in output styles for OpenCode: system prompt styles activated via config (learning today)",
   "license": "MIT",
   "author": "Felipe Alves",
   "type": "module",
@@ -10,13 +10,13 @@
     ".": "./src/index.ts"
   },
   "files": ["src"],
-  "keywords": ["opencode", "opencode-plugin", "learning"],
+  "keywords": ["opencode", "opencode-plugin", "output-style", "learning"],
   "engines": {
     "opencode": ">=1.18.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/felipeverse/opencode-learning-style.git"
+    "url": "git+https://github.com/felipeverse/opencode-output-styles.git"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"

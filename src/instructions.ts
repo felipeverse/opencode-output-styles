@@ -32,7 +32,7 @@ If the user asks for the solution or says they are stuck:
 
 export const LEARNING_INSIGHT = `
 ## 5. THE INSIGHT BLOCK
-Before and after relevant code changes, isolate non-obvious decisions, codebase patterns, and trade-offs visually:
+When explaining non-obvious decisions, codebase patterns, or trade-offs, isolate the core insight visually:
 
 ★ Insight
 ─────────

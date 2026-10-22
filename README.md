@@ -13,6 +13,37 @@ Styles are opt-in: they only reach the system prompt when activated by a tuple `
 - `learning`: active learning mode ("build and understand"). Requires user contribution on code decisions; `★ Insight` blocks; instructions in English.
 - `default`: neutral. Injects nothing. Useful for installing the package without altering any session's behavior.
 
+## Custom styles
+
+Drop a Markdown file into a `styles/` directory and it becomes a style named after the file (without `.md`):
+
+- Global: `~/.config/opencode/styles/*.md` (respects `XDG_CONFIG_HOME`)
+- Project: `{project}/.opencode/styles/*.md`
+
+Singular `style/` is also supported for backwards compatibility with OpenCode's own convention. Precedence on name collision: built-in < global < project (a project file can override a built-in such as `learning`).
+
+```json
+{
+  "plugin": [["opencode-output-styles", { "style": "my-style" }]]
+}
+```
+
+Escape hatch for a file anywhere on disk:
+
+```json
+{
+  "plugin": [["opencode-output-styles", { "style": "./prompts/reviewer.md" }]]
+}
+```
+
+Absolute paths are used as-is; relative paths resolve against the current working directory. A missing file or unknown name throws with the list of available styles and searched directories.
+
+Notes:
+
+- Styles are Markdown text only (no code execution). Safe against broken or malicious files.
+- Styles are discovered once per process; new files require restarting OpenCode.
+- `insights` is specific to the built-in `learning` style; custom styles are static text.
+
 ## Installation
 
 Add the tuple to `opencode.json` (or `opencode.jsonc`) in your project, or to the global config `~/.config/opencode/opencode.jsonc`:

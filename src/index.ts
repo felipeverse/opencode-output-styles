@@ -1,7 +1,7 @@
 // Type-only imports keep this module loadable on both OpenCode 1.x and 2.x.
 import type { Hooks, PluginInput, PluginModule, PluginOptions } from "@opencode-ai/plugin"
 import type { Plugin as PluginV2 } from "@opencode-ai/plugin/v2/promise"
-import { PLUGIN_ID, resolveStyleText, resolveAgentTargets } from "./resolve.js"
+import { PLUGIN_ID, resolveAgentTargets, resolveStyleText } from "./resolve.js"
 
 export async function OutputStyles(ctx: PluginInput, options?: PluginOptions): Promise<Hooks> {
   return {

@@ -1,9 +1,9 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from "vitest"
-import { mkdtemp, mkdir, writeFile, utimes } from "node:fs/promises"
+import { mkdir, mkdtemp, utimes, writeFile } from "node:fs/promises"
 import { tmpdir } from "node:os"
-import { join, dirname } from "node:path"
-import { resolveStyleText, resolveAgentTargets } from "./resolve.js"
+import { dirname, join } from "node:path"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import { LEARNING_CORE, LEARNING_INSIGHT } from "./instructions.js"
+import { resolveAgentTargets, resolveStyleText } from "./resolve.js"
 
 let base: string
 let projectDir: string
@@ -57,7 +57,7 @@ describe("resolveStyleText", () => {
   it("throws listing available styles for an unknown name", async () => {
     await writeProjectFile(".opencode/styles/my.md", "CUSTOM")
     await expect(resolveStyleText({ style: "nope" }, projectDir)).rejects.toThrow(
-      /unknown style "nope".*available: learning, default, my/s
+      /unknown style "nope".*available: learning, default, my/s,
     )
   })
 

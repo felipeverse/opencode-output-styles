@@ -1,7 +1,7 @@
+import { readdir, readFile, stat } from "node:fs/promises"
+import { basename, extname, isAbsolute, join } from "node:path"
 import type { PluginOptions } from "@opencode-ai/plugin"
 import { LEARNING_CORE, LEARNING_INSIGHT } from "./instructions.js"
-import { readdir, readFile, stat } from "node:fs/promises"
-import { join, basename, extname, isAbsolute } from "node:path"
 
 export const PLUGIN_ID = "opencode-output-styles"
 const DEFAULT_AGENT_ID = "build"
@@ -22,7 +22,9 @@ function errMsg(err: unknown) {
 }
 
 function globalConfigRoot(): string | undefined {
-  return process.env.HOME ? join(process.env.XDG_CONFIG_HOME || join(process.env.HOME, ".config"), "opencode") : undefined
+  return process.env.HOME
+    ? join(process.env.XDG_CONFIG_HOME || join(process.env.HOME, ".config"), "opencode")
+    : undefined
 }
 
 type StyleDir = { path: string; scope: "global" | "project" }
@@ -31,11 +33,14 @@ function styleDirs(projectDir: string): StyleDir[] {
   const dirs: StyleDir[] = []
   const globalRoot = globalConfigRoot()
   if (globalRoot) {
-    dirs.push({ path: join(globalRoot, "styles"), scope: "global" }, { path: join(globalRoot, "style"), scope: "global" })
+    dirs.push(
+      { path: join(globalRoot, "styles"), scope: "global" },
+      { path: join(globalRoot, "style"), scope: "global" },
+    )
   }
   dirs.push(
     { path: join(projectDir, ".opencode", "styles"), scope: "project" },
-    { path: join(projectDir, ".opencode", "style"), scope: "project" }
+    { path: join(projectDir, ".opencode", "style"), scope: "project" },
   )
   return dirs
 }
@@ -87,7 +92,7 @@ async function readRequestedFile(requested: string, projectDir: string): Promise
 
 export async function resolveStyleText(
   options: PluginOptions | undefined,
-  projectDir: string
+  projectDir: string,
 ): Promise<string | undefined> {
   const opts = options ?? {}
   const styleOpt = opts.style
@@ -109,7 +114,7 @@ export async function resolveStyleText(
   if (!render && !isPath && !isStyleFilename) {
     const searched = dirs.map((d) => `${d.scope} ${basename(d.path)}`).join(", ")
     throw new Error(
-      `${PLUGIN_ID}: unknown style "${requested}" (available: ${Object.keys(styles).join(", ")}; searched: ${searched})`
+      `${PLUGIN_ID}: unknown style "${requested}" (available: ${Object.keys(styles).join(", ")}; searched: ${searched})`,
     )
   }
 

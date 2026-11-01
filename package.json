@@ -1,6 +1,6 @@
 {
   "name": "opencode-output-styles",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Opt-in output styles for OpenCode — learning mode plus your own markdown styles, injected into the system prompt.",
   "license": "MIT",
   "author": "Felipe Alves",

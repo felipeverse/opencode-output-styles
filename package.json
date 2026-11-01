@@ -25,6 +25,10 @@
     "type": "git",
     "url": "git+https://github.com/felipeverse/opencode-output-styles.git"
   },
+  "homepage": "https://github.com/felipeverse/opencode-output-styles#readme",
+  "bugs": {
+    "url": "https://github.com/felipeverse/opencode-output-styles/issues"
+  },
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "vitest run"

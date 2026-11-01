@@ -15,11 +15,13 @@ and new built-in styles (plain Markdown).
 
 - Node.js 22+
 - `npm ci`
+- `npm run lint` — Biome lint, format, and import order
 - `npm run typecheck` — type checks
 - `npm test` — vitest suite
 
-These are the same checks CI runs on every push and pull request. There is no
-build step: the package ships TypeScript source consumed by OpenCode's runtime.
+`npm run format` applies everything Biome can fix automatically. These are the
+same checks CI runs on every push and pull request. There is no build step: the
+package ships TypeScript source consumed by OpenCode's runtime.
 
 ## Making changes
 
@@ -45,7 +47,7 @@ trailers (`Co-Authored-By` and similar).
 ## Pull requests
 
 - Describe what changes and why; link the issue if one exists.
-- CI (typecheck + tests) must be green before review.
+- CI (lint + typecheck + tests) must be green before review.
 - Small PRs get reviewed faster.
 
 ## Questions

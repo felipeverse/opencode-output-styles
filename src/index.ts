@@ -1,14 +1,16 @@
 // Type-only imports keep this module loadable on both OpenCode 1.x and 2.x.
-import type { Plugin as PluginV1, PluginModule } from "@opencode-ai/plugin"
+import type { Hooks, PluginInput, PluginModule, PluginOptions } from "@opencode-ai/plugin"
 import type { Plugin as PluginV2 } from "@opencode-ai/plugin/v2/promise"
 import { PLUGIN_ID, resolveStyleText, resolveAgentTargets } from "./resolve.js"
 
-export const OutputStyles: PluginV1 = async (ctx, options) => ({
-  "experimental.chat.system.transform": async (_input, output) => {
-    const text = await resolveStyleText(options, ctx.directory)
-    if (text) output.system.push(text)
-  },
-})
+export async function OutputStyles(ctx: PluginInput, options?: PluginOptions): Promise<Hooks> {
+  return {
+    "experimental.chat.system.transform": async (_input, output) => {
+      const text = await resolveStyleText(options, ctx.directory)
+      if (text) output.system.push(text)
+    },
+  }
+}
 
 // One default export for both loaders: OpenCode 1.x calls `server()` for the
 // hooks (PluginModule); OpenCode 2.x reads `id` + `setup`.

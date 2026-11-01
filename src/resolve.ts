@@ -13,15 +13,21 @@ const BUILTIN_STYLES: Record<string, StyleRender> = {
   default: () => undefined,
 }
 
-const warn = (message: string) => console.warn(`[${PLUGIN_ID}] ${message}`)
-const errMsg = (err: unknown) => (err instanceof Error ? err.message : String(err))
+function warn(message: string) {
+  console.warn(`[${PLUGIN_ID}] ${message}`)
+}
 
-const globalConfigRoot = (): string | undefined =>
-  process.env.HOME ? join(process.env.XDG_CONFIG_HOME || join(process.env.HOME, ".config"), "opencode") : undefined
+function errMsg(err: unknown) {
+  return err instanceof Error ? err.message : String(err)
+}
+
+function globalConfigRoot(): string | undefined {
+  return process.env.HOME ? join(process.env.XDG_CONFIG_HOME || join(process.env.HOME, ".config"), "opencode") : undefined
+}
 
 type StyleDir = { path: string; scope: "global" | "project" }
 
-const styleDirs = (projectDir: string): StyleDir[] => {
+function styleDirs(projectDir: string): StyleDir[] {
   const dirs: StyleDir[] = []
   const globalRoot = globalConfigRoot()
   if (globalRoot) {
@@ -37,7 +43,7 @@ const styleDirs = (projectDir: string): StyleDir[] => {
 type CachedFile = { mtimeMs: number; text: string }
 const fileCache = new Map<string, CachedFile>()
 
-const readStyleFile = async (path: string): Promise<string> => {
+async function readStyleFile(path: string): Promise<string> {
   const info = await stat(path)
   const cached = fileCache.get(path)
   if (cached && cached.mtimeMs === info.mtimeMs) return cached.text
@@ -46,7 +52,7 @@ const readStyleFile = async (path: string): Promise<string> => {
   return text
 }
 
-const discoverStyles = async (dirs: StyleDir[]): Promise<Record<string, string>> => {
+async function discoverStyles(dirs: StyleDir[]): Promise<Record<string, string>> {
   const discovered: Record<string, string> = {}
   for (const dir of dirs) {
     let entries: string[]
@@ -70,7 +76,7 @@ const discoverStyles = async (dirs: StyleDir[]): Promise<Record<string, string>>
   return discovered
 }
 
-const readRequestedFile = async (requested: string, projectDir: string): Promise<string> => {
+async function readRequestedFile(requested: string, projectDir: string): Promise<string> {
   const path = isAbsolute(requested) ? requested : join(projectDir, requested)
   try {
     return await readStyleFile(path)
@@ -79,10 +85,10 @@ const readRequestedFile = async (requested: string, projectDir: string): Promise
   }
 }
 
-export const resolveStyleText = async (
+export async function resolveStyleText(
   options: PluginOptions | undefined,
   projectDir: string
-): Promise<string | undefined> => {
+): Promise<string | undefined> {
   const opts = options ?? {}
   const styleOpt = opts.style
   if (styleOpt !== undefined && typeof styleOpt !== "string") {
@@ -116,7 +122,7 @@ export const resolveStyleText = async (
   return text
 }
 
-export const resolveAgentTargets = (options: PluginOptions | undefined, availableIds: string[]): string[] => {
+export function resolveAgentTargets(options: PluginOptions | undefined, availableIds: string[]): string[] {
   const agentOpt = options?.agent
   if (agentOpt === undefined) return [DEFAULT_AGENT_ID]
   if (agentOpt === "all") return availableIds

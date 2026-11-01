@@ -24,7 +24,7 @@ afterEach(() => {
   else process.env.XDG_CONFIG_HOME = originalXdg
 })
 
-const writeProjectFile = async (rel: string, content: string): Promise<string> => {
+async function writeProjectFile(rel: string, content: string): Promise<string> {
   const path = join(projectDir, rel)
   await mkdir(dirname(path), { recursive: true })
   await writeFile(path, content)

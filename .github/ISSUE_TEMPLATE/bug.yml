@@ -1,0 +1,50 @@
+name: Bug report
+description: A style, the injection, or the plugin behaves differently than documented
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report. The plugin runs on OpenCode 1.x (hook)
+        and 2.x (agent transform), so version context is what makes a report actionable.
+  - type: input
+    id: package-version
+    attributes:
+      label: opencode-output-styles version
+      placeholder: "0.2.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: opencode-version
+    attributes:
+      label: OpenCode version
+      description: 1.x uses the hook entry point, 2.x the agent transform.
+      options:
+        - "1.x"
+        - "2.x"
+        - not sure
+    validations:
+      required: true
+  - type: textarea
+    id: style
+    attributes:
+      label: Style and activation
+      description: Style name or path, and the tuple from opencode.json / opencode.jsonc (includes `agent` and `insights` if set).
+      placeholder: |
+        { "plugin": [["opencode-output-styles", { "style": "learning" }]] }
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Reproduction steps and the actual behavior. Logs or errors welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: false

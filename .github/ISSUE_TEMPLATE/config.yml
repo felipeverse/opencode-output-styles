@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Usage questions
+    url: https://github.com/felipeverse/opencode-output-styles#readme
+    about: Install, options, limitations, token cost — start with the README.
+  - name: Report a security vulnerability
+    url: https://github.com/felipeverse/opencode-output-styles/security/policy
+    about: Please report security issues privately, not as public issues.

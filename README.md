@@ -1,5 +1,9 @@
 # opencode-output-styles
 
+[![CI](https://github.com/felipeverse/opencode-output-styles/actions/workflows/ci.yml/badge.svg)](https://github.com/felipeverse/opencode-output-styles/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/opencode-output-styles)](https://www.npmjs.com/package/opencode-output-styles)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Opt-in output styles for OpenCode: system prompts injected alongside the base system, activated only via tuple config. Works on OpenCode 1.x and 2.x.
 
 ## How it works
@@ -100,3 +104,11 @@ Plugin: implements directly, no contribution requested.
 User: "How do you decide between LRU and TTL cache here?"
 
 Plugin: `★ Insight` block with codebase-specific points (e.g. lazy `TTLCache` scan, `cache.ts:9`, `Map.get` O(1)), not generic concepts.
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, the commit convention and the PR flow. By participating, you agree to the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+## Security
+
+Report vulnerabilities privately via [GitHub Security Advisories](https://github.com/felipeverse/opencode-output-styles/security/advisories). See [SECURITY.md](SECURITY.md) for the support policy.

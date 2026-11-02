@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 Entries up to 0.2.0 were written by hand. From 0.2.1 onward this file is maintained by release-please, generated from conventional commits.
 
+## [0.2.1](https://github.com/felipeverse/opencode-output-styles/compare/v0.2.0...v0.2.1) (2026-11-02)
+
+
+### Miscellaneous Chores
+
+* release 0.2.1 ([d23e19a](https://github.com/felipeverse/opencode-output-styles/commit/d23e19afabf046c92012531201ee5d144dfa9c01))
+
 ## [0.2.0] - 2026-11-01
 
 ### Added
